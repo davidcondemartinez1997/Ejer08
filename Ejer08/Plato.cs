@@ -11,6 +11,7 @@ namespace Ejer08
         public Alimento Alimento1;
         public Alimento Alimento2;
 
+        public Plato() { }
         public Plato(Alimento Alimento1, Alimento Alimento2)
         {
             this.Alimento1 = Alimento1;
