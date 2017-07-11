@@ -8,17 +8,24 @@ namespace Ejer08
 {
     public class TurboMix : ICocina
     {
+        public IBascula Bascula { get; set; }
+        public ICocina Cocina { get; set; }
+
+        public TurboMix(IBascula _Bascula, ICocina _Cocina)
+        {
+            this.Bascula = _Bascula;
+            this.Cocina = _Cocina;
+        }
+
         public Plato PesarYCocinar(Alimento Alimento1, Alimento Alimento2)
         {
-            IBascula bascula = new BasculaService();
-            int Peso1 = bascula.Pesar(Alimento1);
-            int Peso2 = bascula.Pesar(Alimento2);
-            ICocina cocina = new CocinaService();
-            cocina.Calentar(Alimento1, Alimento2);
+            int Peso1 = Bascula.Pesar(Alimento1);
+            int Peso2 = Bascula.Pesar(Alimento2);
+            Cocina.Calentar(Alimento1, Alimento2);
 
             return new Plato(Alimento1, Alimento2);
-
         }
+
         public int Pesar(Alimento Alimento1, Alimento Alimento2)
         {
             this.Calentar(Alimento1, Alimento2);
